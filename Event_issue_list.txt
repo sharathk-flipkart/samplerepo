@@ -1,0 +1,19 @@
+
+FKI:
+
+1. There is no data for major fki ("bigfoot_journal.dart_fki_scp_warehouse_shipment_event_1") events but thh same is present in minor event table.
+	Q: select count(day), min(day), max(day) from dart_fki_scp_warehouse_shipment_event_1 where day between 20160301 AND 20160319;
+	R: 1       20160308        20160308
+
+2. Data with error for event_id is present from 20160309 till 20160314.
+   Q: select min(day), max(day) from dart_fki_scp_warehouse_shipment_event_1_1 where day between 20160301 AND 20160319 AND eventid like 'S%';
+   R: 20160309		20160314
+ 
+WSR:
+
+1. Again there iss no data in najor version of WSR for the event "dart_wsr_scp_warehouse_shipment_event_1" as in the monor event table"dart_wsr_scp_warehouse_shipment_event_1_2"
+2. Data with error for event_id is present from 20160310 till 20160314.
+   Q: select count(day), min(day), max(day) from dart_wsr_scp_warehouse_shipment_event_1_2 where day between 20160301 AND 20160319 AND eventid like 'S%';
+   R: 18431   20160310        20160314
+   
+   
